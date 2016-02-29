@@ -42,6 +42,7 @@
     var $time = $('.time');
     var timer;
     var paused = true;
+    var date;
     var alarm10 = document.getElementById("10min");
     var alarm15 = document.getElementById("15min");
     counter = function(){
@@ -67,7 +68,7 @@
                     alarm15.play();
                 }
         }
-        var date = new Date(count * 1000).toISOString().substr(11, 8);
+        date = new Date(count * 1000).toISOString().substr(11, 8);
         $time.html(date);
         timer = setTimeout(function(){
             counter();
@@ -140,7 +141,7 @@ function change(){
             var macid = document.getElementById("username");
             var showered = document.getElementById("showertime");
             username.value = loginname;
-            showered.value = $time;
+            showered.value = date;
             showerform.submit();
             
         }
