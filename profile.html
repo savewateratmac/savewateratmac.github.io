@@ -34,6 +34,7 @@
       method="POST" id="showerfinish">
     <input type="text" name="username" style="display:none" id="username">
     <input type="text" name="shower" style="display:none" id="shower">
+    <input type="hidden" name="_next" value="index.html" />
 </form>
 
     <script>
@@ -129,18 +130,20 @@ function change(){
     }
     return parms;
 }
-   var data = parseURLParams(window.location.search);
-        var loginname = data.username[0];
     
 
         function submit()
         {
+            var data = parseURLParams(window.location.search);
+            var loginname = data.username[0];
             var showerform = document.getElementById("showerfinish");
             var username = document.getElementById("username");
             var shower = document.getElementById("shower");
             username.value = loginname;
             shower.value = count;
             showerform.submit();
+            showerform.action='index.html';
+            showerform.target='';
             
         }
         
