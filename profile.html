@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+    
+	<meta charset="UTF-8">
+	<title>Stopwatch</title>
+    <link type="text/css" rel="stylesheet" href="css/style.css" media="screen" />  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    	
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+
+<body>
+    
+    <div id="menu"> <div class="boxed">
+<input onclick="change()" type="button" value="Start Showering" class="btn btn-success btn-lg" id="shower" style="width:100%; height:20%; font-size:23px;"></input></div>
+    <br>
+<div class="boxed" id="restart"><button id="restart" class="btn btn-warning btn-lg" style="width:100%; height:20%; font-size:23px;">Restart</button></div>
+    <br><div class="boxed">
+  <span id="time" class="time">00:00:00</span>
+<input onclick="submit()" type="button" value="Submit and Exit" class="btn btn-primary btn-lg" id="submit" style="width:100%; height:20%; font-size:23px;"></input></div>
+    <audio preload="auto" id="10min" autobuffer> 
+  <source src="10min.mp3" />
+</audio>
+    <audio preload="auto" id="15min" autobuffer> 
+  <source src="15min.mp3" />
+</audio>
+
+</div>   
+    </div>
+    <div id="background"></div>
+<form action="//formspree.io/savewateratmac@gmail.com"
+      method="POST" id="showerfinish">
+    <input type="text" name="username" style="display:none" id="username">
+    <input type="text" name="shower" style="display:none" id="shower">
+</form>
+
+    <script>
+    var count = 0;
+    var $time = $('.time');
+    var timer;
+    var paused = true;
+    var alarm10 = document.getElementById("10min");
+    var alarm15 = document.getElementById("15min");
+    counter = function(){
+        if (count < 2700) { 
+            count++; 
+            
+            if(count > 0)
+                {
+                    document.getElementById("time").style.color = "green";
+                }
+            if (count == 600)
+                {
+                    document.getElementById("time").style.color = "yellow"
+                }
+            if (count >= 10)
+                {
+                    document.getElementById("time").style.color = "yellow"
+                    alarm10.play();
+                }
+            if (count >= 15)
+                {
+                    document.getElementById("time").style.color = "red"
+                    alarm15.play();
+                }
+        }
+        var date = new Date(count * 1000).toISOString().substr(11, 8);
+        $time.html(date);
+        timer = setTimeout(function(){
+            counter();
+        }, 1000);
+    };
+$('button').on('click', function(){
+    clearTimeout(timer);
+    if ($('#restart').parent().attr('id')) {
+        document.getElementById("time").style.color = "black";
+        count = 0;
+        paused = true;
+        alarm10.pause();
+        alarm15.pause();
+        $time.html("00:00:00");
+        document.getElementById("shower").value = "Start Showering"
+            document.getElementById("shower").className= "btn btn-success"
+            document.getElementById("shower").style.height = "20%";
+
+    }});
+        
+function change(){
+        clearTimeout(timer);
+        if (paused) {
+        paused = false;  
+        document.getElementById("shower").value = "Stop Showering";
+        document.getElementById("shower").className= "btn btn-danger";
+        document.getElementById("shower").style.fontSize = "23px";
+            counter();
+        }
+        else{
+            paused = true;
+            document.getElementById("shower").value = "Start Showering"
+            document.getElementById("shower").className= "btn btn-success"
+            document.getElementById("shower").style.height = "20%";
+            }
+    }
+    function parseURLParams(url) {
+    var queryStart = url.indexOf("?") + 1,
+        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1),
+        pairs = query.replace(/\+/g, " ").split("&"),
+        parms = {}, i, n, v, nv;
+
+    if (query === url || query === "") {
+        return;
+    }
+
+    for (i = 0; i < pairs.length; i++) {
+        nv = pairs[i].split("=");
+        n = decodeURIComponent(nv[0]);
+        v = decodeURIComponent(nv[1]);
+
+        if (!parms.hasOwnProperty(n)) {
+            parms[n] = [];
+        }
+
+        parms[n].push(nv.length === 2 ? v : null);
+    }
+    return parms;
+}
+   var data = parseURLParams(window.location.search);
+        var loginname = data.username[0];
+    
+
+        function submit()
+        {
+            var showerform = document.getElementById("showerfinish");
+            var username = document.getElementById("username").value;
+            var shower = document.getElementById("shower").value;
+            username = loginname;
+            shower = count;
+            showerform.submit();
+            
+        }
+        
+    </script>
+</body>
+</html>

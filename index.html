@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+	<!-- General meta information -->
+	<title>Save Water at Mac </title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="robots" content="index, follow" />
+	<meta charset="utf-8" />
+	<!-- // General meta information -->
+	
+	
+	<!-- Load Javascript -->
+	<script type="text/javascript" src="./js/jquery.js"></script>
+	<script type="text/javascript" src="./js/jquery.query-2.1.7.js"></script>
+	<script type="text/javascript" src="./js/rainbows.js"></script>
+	<!-- // Load Javascipt -->
+
+	<!-- Load stylesheets -->
+    <link type="text/css" rel="stylesheet" href="css/style.css" />  
+	
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- // Load stylesheets -->
+	
+<script>
+
+
+	$(document).ready(function(){
+ 
+	$("#submit1").hover(
+	function() { 
+	$(this).animate({"opacity": "0"}, "slow");
+	},
+	function() {
+	$(this).animate({"opacity": "1"}, "slow");
+	});
+ 	});
+    function submit()
+    {
+      var username = document.getElementById("username").value;
+        document.getElementById("thisun").value = username;
+        $("#signin").submit();
+    }
+
+
+</script>
+	
+</head>
+<body>
+    <div class="container">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h1><span class="fa fa-sign-in"></span> Login</h1>
+
+            <!-- LOGIN FORM -->
+            <form action="profile.html" method="get">
+                <div class="form-group">
+                    <label>MacID</label>
+                    <input type="text" class="form-control" name="username">
+                </div>
+                <button type="submit" class="btn btn-success btn-lg">Login</button>
+            </form>
+        </div>
+    </div>
+    
+
+
+</body>
+</html>
