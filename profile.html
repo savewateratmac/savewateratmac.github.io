@@ -74,13 +74,13 @@
                 {
                     document.getElementById("time").style.color = "yellow"
 //                    alarm10.play();
-                    ion.sound.play("10min")
+                    ion.sound.play("10min");
                 }
             if (count >= 15)
                 {
                     document.getElementById("time").style.color = "red"
-                    alarm15.play();
-                    ion.sound.play("15min")
+//                    alarm15.play();
+                    ion.sound.play("15min");
                 }
         }
         date = new Date(count * 1000).toISOString().substr(11, 8);
@@ -97,6 +97,8 @@ $('button').on('click', function(){
         paused = true;
         alarm10.pause();
         alarm15.pause();
+        ion.sound.stop("10min");
+        ion.sound.stop("15min");
         $time.html("00:00:00");
         document.getElementById("shower").value = "Start Showering"
             document.getElementById("shower").className= "btn btn-success"
@@ -107,6 +109,8 @@ $('button').on('click', function(){
 function change(){
         alarm10.pause();
         alarm15.pause();
+        ion.sound.stop("10min");
+        ion.sound.stop("15min");
         clearTimeout(timer);
         if (paused) {
         paused = false;  
