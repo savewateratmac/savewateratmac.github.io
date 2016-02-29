@@ -74,12 +74,18 @@
                 {
                     document.getElementById("time").style.color = "yellow"
 //                    alarm10.play();
+                }
+            if (count == 10)
+                {
                     ion.sound.play("10min");
                 }
             if (count >= 15)
                 {
                     document.getElementById("time").style.color = "red"
 //                    alarm15.play();
+                }
+            if (count == 15)
+                {
                     ion.sound.play("15min");
                 }
         }
@@ -95,8 +101,6 @@ $('button').on('click', function(){
         document.getElementById("time").style.color = "black";
         count = 0;
         paused = true;
-        alarm10.pause();
-        alarm15.pause();
         ion.sound.stop("10min");
         ion.sound.stop("15min");
         $time.html("00:00:00");
@@ -107,8 +111,7 @@ $('button').on('click', function(){
     }});
         
 function change(){
-        alarm10.pause();
-        alarm15.pause();
+
         ion.sound.stop("10min");
         ion.sound.stop("15min");
         clearTimeout(timer);
