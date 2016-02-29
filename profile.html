@@ -88,6 +88,8 @@ $('button').on('click', function(){
     }});
         
 function change(){
+        alarm10.pause();
+        alarm15.pause();
         clearTimeout(timer);
         if (paused) {
         paused = false;  
@@ -134,10 +136,10 @@ function change(){
         function submit()
         {
             var showerform = document.getElementById("showerfinish");
-            var username = document.getElementById("username").value;
-            var shower = document.getElementById("shower").value;
-            username = loginname;
-            shower = count;
+            var username = document.getElementById("username");
+            var shower = document.getElementById("shower");
+            username.value = loginname;
+            shower.value = count;
             showerform.submit();
             
         }
