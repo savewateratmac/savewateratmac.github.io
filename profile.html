@@ -141,7 +141,7 @@ function change(){
             var macid = document.getElementById("username");
             var showered = document.getElementById("showertime");
             username.value = loginname;
-            showered.value = date;
+            showered.value = new Date(count * 1000).toISOString().substr(11, 8);
             showerform.submit();
             
         }
