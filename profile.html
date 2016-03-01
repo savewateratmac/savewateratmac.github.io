@@ -66,25 +66,20 @@
                 {
                     document.getElementById("time").style.color = "green";
                 }
+            if (count >= 600)
+                {
+                    document.getElementById("time").style.color = "yellow"
+                }
             if (count == 600)
-                {
-                    document.getElementById("time").style.color = "yellow"
-                }
-            if (count >= 10)
-                {
-                    document.getElementById("time").style.color = "yellow"
-//                    alarm10.play();
-                }
-            if (count == 10)
                 {
                     ion.sound.play("10min");
                 }
-            if (count >= 15)
+            if (count >= 900)
                 {
                     document.getElementById("time").style.color = "red"
 //                    alarm15.play();
                 }
-            if (count == 15)
+            if (count == 900)
                 {
                     ion.sound.play("15min");
                 }
